@@ -1,80 +1,79 @@
-<div id="container" class="container" fxLayout fxLayout.sm="column" fxLayoutAlign="center" fxLayoutGap="10px"
-  fxLayout.xs="column">
-    <div cdkDropList #firstList="cdkDropList" [cdkDropListData]="first" [cdkDropListConnectedTo]="[thirdList, secondList]"
-      (cdkDropListDropped)="drop($event)" class="list container" fxLayout="column" fxLayoutGap="20px" fxFlex="100%"
-      fxFlex.sm="100%">
-      <div class="list-item" *ngFor="let item of first" cdkDrag>
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              <p class="card-title-text">
-                {{item}}
-              </p>
-              <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <button mat-icon-button class="left-button" cdkDragHandle>
-                <mat-icon>open_with</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </div>
+<div id="container" fxLayout="column" class="container" fxLayoutAlign="space-between center">
+  <div cdkDropList #firstList="cdkDropList" [cdkDropListData]="first" [cdkDropListConnectedTo]="[thirdList, secondList]"
+    (cdkDropListDropped)="drop($event)" class="list container group1" fxFlex="95%" style="width: 95%;">
+    <div class="list-item" *ngFor="let item of first; let i = index" cdkDrag>
+      <mat-card style="margin-top:1rem;" class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p class="card-title-text">
+              {{item}}
+            </p>
+            <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button class="left-button" cdkDragHandle>
+              <mat-icon>open_with</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <!-- <div class='graphic-line' #plotly_graph{}></div> -->
+      </mat-card>
     </div>
-
-    <div cdkDropList #secondList="cdkDropList" [cdkDropListData]="second" [cdkDropListConnectedTo]="[thirdList, firstList]"
-      (cdkDropListDropped)="drop($event)" class="list container" fxLayout="column" fxLayoutGap="20px" fxFlex="45%"
-      fxFlex.sm="100%">
-      <div class="list-item" *ngFor="let item of second" cdkDrag>
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              <p class="card-title-text">
-                {{item}}
-              </p>
-              <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <button mat-icon-button class="left-button" cdkDragHandle>
-                <mat-icon>open_with</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </div>
+  </div>
+  <div cdkDropList #secondList="cdkDropList" [cdkDropListData]="second" [cdkDropListConnectedTo]="[thirdList, firstList]"
+    (cdkDropListDropped)="drop($event)" class="list container group2" fxFlex="100%" style="width: 95%; margin-top:1rem;"
+    fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div class="list-item" *ngFor="let item of second; let i = index" cdkDrag fxFlex="50%" style="margin-top: 1rem; width: 100%;">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p class="card-title-text">
+              {{item}}
+            </p>
+            <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button class="left-button" cdkDragHandle>
+              <mat-icon>open_with</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <!-- <div class='graphic-line' #plotly_graph></div> -->
+      </mat-card>
     </div>
-
-    <div cdkDropList #thirdList="cdkDropList" [cdkDropListData]="third" [cdkDropListConnectedTo]="[secondList, firstList]"
-      (cdkDropListDropped)="drop($event)" class="list container" fxLayout="column" fxLayoutGap="20px" fxFlex="45%"
-      fxFlex.sm="100%">
-      <div class="list-item" *ngFor="let item of third" cdkDrag>
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              <p class="card-title-text">
-                {{item}}
-              </p>
-              <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <button mat-icon-button class="left-button" cdkDragHandle>
-                <mat-icon>open_with</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </div>
+  </div>
+  <div cdkDropList #thirdList="cdkDropList" [cdkDropListData]="third" [cdkDropListConnectedTo]="[secondList, firstList]"
+    (cdkDropListDropped)="drop($event)" class="list container group3" fxFlex="100%" style="width: 95%; margin-top:1rem;"
+    fxLayoutGap="10px" fxLayoutAlign="space-around center">
+    <div class="list-item" *ngFor="let item of third; let i = index" cdkDrag fxFlex="25%" style="margin-top: 1rem; width: 100%;">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p class="card-title-text">
+              {{item}}
+            </p>
+            <button mat-icon-button class="right-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button class="left-button" cdkDragHandle>
+              <mat-icon>open_with</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <!-- <div class='graphic-line' #plotly_graph></div> -->
+      </mat-card>
     </div>
+  </div>
 </div>
